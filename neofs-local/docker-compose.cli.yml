@@ -1,0 +1,13 @@
+version: '2.4'
+services:
+
+  cli:
+    image: nspccdev/neofs-cli:${NEOFS_CLI_VERSION}
+    command: ["bash"]
+    container_name: neofs-cli
+    depends_on:
+      - storage10
+    volumes:
+      - ../data:/data
+      - ./keys/user.key:/user.key:ro
+      - ./cli/config.yml:/.neofs-cli.yml
